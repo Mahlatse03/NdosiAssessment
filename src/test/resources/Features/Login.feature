@@ -1,3 +1,4 @@
+@validlogin
 Feature: Valid Login and Session
 
   Scenario Outline: As a user, I want to log in to access my account
@@ -11,12 +12,12 @@ Feature: Valid Login and Session
         |   md@gmail.com    | emd12345  |
 
 
+  @invalidlogin
 Feature: Invalid Login Attempts
 
   Scenario Outline: As a user, I want to log in to access my account
     Given User is on the login page
-    When User enters email <email>
-    And User enters password <password>
+    When User enters invalid email <email> or <password>
     And User clicks on the login button
     Then User should see a message <message>
     Examples:
