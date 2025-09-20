@@ -1,6 +1,7 @@
 package StepDefinitions;
 
 import Utils.Base;
+import io.cucumber.java.After;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -37,18 +38,23 @@ public class DefinitionOfSteps extends Base {
     }
     @Then("User should land on  the landing page")
     public void user_should_land_on_the_landing_page() {
-        //landingPage.verifyLearnAutomationTheRightWayIsDisplayed();
+        landingPage.verifyOverviewSectionIsDisplayed();
     }
 
     @When("User enters invalid email {} or {}")
     public void userEntersInvalidEmailEmailOrPassword(String email, String password) {
-        //loginPage.enterEmail(email);
-        //loginPage.enterPassword(password);
+        loginPage.enterEmail(email);
+        loginPage.enterPassword(password);
     }
 
     @Then("User should see a message {}")
     public void userShouldSeeAMessageMessage(String message) {
-        //loginPage.confirmIfErrorMessageIsDisplayed(message);
+        loginPage.confirmIfErrorMessageIsDisplayed(message);
+    }
+
+   @After
+    public void quitBrowser() {
+        driver.quit();
     }
 
 }

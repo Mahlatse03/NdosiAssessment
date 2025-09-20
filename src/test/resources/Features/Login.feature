@@ -1,5 +1,5 @@
-@validlogin
-Feature: Valid Login and Session
+@validLogin
+Feature: Login validation
 
   Scenario Outline: As a user, I want to log in to access my account
     Given User is on the login page
@@ -8,21 +8,21 @@ Feature: Valid Login and Session
     And User clicks on the login button
     Then User should land on  the landing page
     Examples:
-      |email  | password  |
-        |   md@gmail.com    | emd12345  |
+      | email        | password |
+      | md@gmail.com | emd12345 |
 
 
-  @invalidlogin
-Feature: Invalid Login Attempts
-
+  @invalidLogin
   Scenario Outline: As a user, I want to log in to access my account
     Given User is on the login page
     When User enters invalid email <email> or <password>
     And User clicks on the login button
     Then User should see a message <message>
     Examples:
-      |email          | password   | message                     |
-        |               |            | Please fill in all fields   |
-        | md@gmail.com  | invalidPassword|  Login failed: Invalid login credentials |
-        | invalidemail  | Password123| Please enter a valid email address |
+      | email           | password        | message                               |
+      |                 |                 | Login failed: Missing required fields |
+      | md@gmail.com    |                 | Login failed: Missing required fields |
+      |                 | Password123     | Login failed: Missing required fields |
+      | md@gmail.com    | invalidPassword | Login failed: Authentication failed   |
+      | email@gmail.com | Password123     | PLogin failed: Authentication failed  |
 

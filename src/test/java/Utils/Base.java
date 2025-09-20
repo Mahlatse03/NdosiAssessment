@@ -10,7 +10,7 @@ public class Base {
 
     BrowserFactory browserFactory = new BrowserFactory();
     protected final WebDriver driver = browserFactory.startBrowser("chrome", "https://www.ndosiautomation.co.za/" +
-            " " );
+            "/#practice" );
 
     // Create class instances
     public LoginPage loginPage = PageFactory.initElements(driver, LoginPage.class);
