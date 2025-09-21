@@ -12,7 +12,7 @@ import org.slf4j.LoggerFactory;
 
 public class DefinitionOfSteps extends Base {
 
-    private static final Logger log = LoggerFactory.getLogger(DefinitionOfSteps.class);
+    //private static final Logger log = LoggerFactory.getLogger(DefinitionOfSteps.class);
     public WebDriver driver;
     public DefinitionOfSteps (){
         this.driver = super.driver;
@@ -36,10 +36,12 @@ public class DefinitionOfSteps extends Base {
     public void user_clicks_on_the_login_button() {
         loginPage.clickLoginButton();
     }
-    @Then("User should land on  the landing page")
-    public void user_should_land_on_the_landing_page() {
-        landingPage.verifyOverviewSectionIsDisplayed();
+
+    @Then("User should land on  the landing page with {} displayed")
+    public void userShouldLandOnTheLandingPageWithMessageDisplayed(String firstName) {
+        learningMaterialPage.verifyOverviewSectionIsDisplayed(firstName);
     }
+
 
     @When("User enters invalid email {} or {}")
     public void userEntersInvalidEmailEmailOrPassword(String email, String password) {
@@ -50,6 +52,16 @@ public class DefinitionOfSteps extends Base {
     @Then("User should see a message {}")
     public void userShouldSeeAMessageMessage(String message) {
         loginPage.confirmIfErrorMessageIsDisplayed(message);
+    }
+
+    @When("User switcher Tabs")
+    public void userSwitcherTabs() {
+        loginPage.switchTabs();
+    }
+
+    @Then("User should be logged out and redirected to the login page")
+    public void userShouldBeLoggedOutAndRedirectedToTheLoginPage() {
+        loginPage.verifyLoginPageIsDisplayed();
     }
 
    @After

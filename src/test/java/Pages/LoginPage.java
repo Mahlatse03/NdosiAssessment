@@ -26,6 +26,17 @@ public class LoginPage {
     @FindBy (id = "login-submit")
     WebElement loginButton_id;
 
+    @FindBy(id = "nav-btn-contact")
+    WebElement contactUsButton_id;
+
+    @FindBy(id = "nav-btn-practice")
+    WebElement learningMaterialButton_id;
+
+
+    public LoginPage(WebDriver driver) {
+        this.driver = driver;
+    }
+
     public void verifyLoginPageIsDisplayed() {
         signupToggle_id.isDisplayed();
     }
@@ -45,5 +56,10 @@ public class LoginPage {
         String alertText = alert.getText();
         Assert.assertEquals(alertText, errorMessage);
         alert.accept();
+    }
+
+    public void switchTabs() {
+        contactUsButton_id.click();
+        learningMaterialButton_id.click();
     }
 }

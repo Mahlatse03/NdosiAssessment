@@ -10,9 +10,6 @@ public class LandingPage {
 
     @FindBy(id = "overview-section")
     WebElement overviewSection_id;
-
-    @FindBy(id = "practice-header")
-    WebElement practiceHeader_id;
     @FindBy (id = "nav-btn-practice")
     WebElement learningMaterialButton_id;
     @FindBy (id = "tab-btn-web")
@@ -22,9 +19,7 @@ public class LandingPage {
     public LandingPage(WebDriver driver) {
         this.driver = driver;
     }
-    public void verifyOverviewSectionIsDisplayed() {
-        practiceHeader_id.isDisplayed();
-    }
+
     public void clickLearningMaterialButton() {
         learningMaterialButton_id.click();
     }
