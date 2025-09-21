@@ -5,6 +5,7 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.devtools.v137.audits.model.SRIMessageSignatureError;
 
 public class PhoneSelectStepDefs extends Base {
 
@@ -15,50 +16,45 @@ public class PhoneSelectStepDefs extends Base {
 
     @Given("I am on Wizard page and there is no device selected")
     public void i_am_on_wizard_page_and_there_is_no_device_selected() {
+        learningMaterialPage.verifyInventoryTitleIsDisplayed();
 
     }
-    @When("User selects a device <type>")
-    public void user_selects_a_device_type() {
+    @When("User selects a device {}")
+    public void user_selects_a_device_type(String deviceType) {
+        learningMaterialPage.selectDeviceType(deviceType);
 
     }
-    @When("There is no devide <brand> selected")
-    public void there_is_no_devide_brand_selected() {
+
+    @Then("User must select a brand {} if there is no brand selected")
+    public void user_must_select_a_brand(String deviceBrand) {
+        learningMaterialPage.verifyNoBrandSelected();
+        learningMaterialPage.selectBrand(deviceBrand);
+    }
+
+    @Then("User must select a storage {} if there is no storage selected")
+    public void user_must_select_a_storage(String deviceStorage) {
+        learningMaterialPage.verifyNoStorageSelected();
+        learningMaterialPage.selectDeviceStorage(deviceStorage);
 
     }
-    @Then("User must select a <brand>")
-    public void user_must_select_a_brand() {
+    @Then("User must select a quantity {} if there is no quantity selected")
+    public void user_must_select_a_quantity(String quantity) {
+        learningMaterialPage.enterQuantity(quantity);
 
     }
-    @When("There is no storage <storage> selected")
-    public void there_is_no_storage_storage_selected() {
 
-    }
-    @Then("User must select a <storage>")
-    public void user_must_select_a_storage() {
-
-    }
-    @When("There is no quantity <quantity> selected")
-    public void there_is_no_quantity_quantity_selected() {
-
-    }
-    @Then("User must select a <quantity>")
-    public void user_must_select_a_quantity() {
-
-    }
-    @When("There is no address <address> selected")
-    public void there_is_no_address_address_selected() {
-
-    }
-    @Then("User must capture <address>")
-    public void user_must_capture_address() {
+    @Then("User must capture address <address> if there is no address")
+    public void user_must_capture_address(String address) {
+        learningMaterialPage.enterAddress(address);
 
     }
     @When("Next button is clicked and there are missing fields")
     public void next_button_is_clicked_and_there_are_missing_fields() {
-
+        learningMaterialPage.verifyFormCompletionAndClickNextButton();
     }
-    @Then("User should see an error message Please correct highlighted fields")
-    public void user_should_see_an_error_message_please_correct_highlighted_fields() {
+    @Then("User should see an error message {}")
+    public void user_should_see_an_error_message (String deviceErrorMessage) {
+        learningMaterialPage.confirmMissingFieldsAlert(deviceErrorMessage);
 
     }
 }

@@ -3,18 +3,14 @@ Feature:
   Scenario Outline:
     Given I am on Wizard page and there is no device selected
     When User selects a device <type>
-    And There is no devide <brand> selected
-    Then User must select a <brand>
-    When There is no storage <storage> selected
-    Then User must select a <storage>
-    When There is no quantity <quantity> selected
-    Then User must select a <quantity>
-    When There is no address <address> selected
-    Then User must capture <address>
+    Then User must select a brand <brand> if there is no brand selected
+    Then User must select a storage <storage> if there is no storage selected
+    Then User must select a quantity <quantity> if there is no quantity selected
+    Then User must capture address <address> if there is no address
     When Next button is clicked and there are missing fields
-    Then User should see an error message <Message>
+    Then User should see an error message <deviceErrorMessage>
     Examples:
-      |Type   | Brand  | Storage | Quantity | Address      | Message                          |
+      |deviceType   | deviceBrand  | deviceStorage | Quantity | Address      | DeviceErrorMessage                          |
         | Phone |        | 128GB   | 1        | 123 Main St  | Please correct highlighted fields  |
         | Phone | Apple  |         | 1        | 123 Main St  | Please correct highlighted fields  |
         | Phone | Apple  | 128GB   |          | 123 Main St  | Please correct highlighted fields  |
