@@ -12,12 +12,10 @@ public class Base {
     protected final WebDriver driver = browserFactory.startBrowser("chrome", "https://www.ndosiautomation.co.za/" +
             "/#practice" );
 
-    // Create class instances
+    // Create page constructors
     public LoginPage loginPage = PageFactory.initElements(driver, LoginPage.class);
     public LearningMaterialPage learningMaterialPage = PageFactory.initElements(driver, LearningMaterialPage.class);
     public LandingPage landingPage = PageFactory.initElements(driver, LandingPage.class);
-
-
 
 
 }

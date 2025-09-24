@@ -9,7 +9,7 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 public class BrowserFactory{
 
     static WebDriver driver;
-    public WebDriver startBrowser(String prefBrowser, String url) {
+    public static WebDriver startBrowser(String prefBrowser, String url) {
         switch (prefBrowser.toLowerCase()){
             case "chrome":
                 driver = new ChromeDriver();
@@ -24,5 +24,13 @@ public class BrowserFactory{
         driver.get(url);
         driver.manage().window().maximize();
         return driver;
+    }
+
+
+    public static void quitDriver() {
+        if (driver != null) {
+            driver.quit();
+            driver = null;
+        }
     }
 }

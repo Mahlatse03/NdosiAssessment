@@ -37,11 +37,7 @@ public class LoginPage {
         this.driver = driver;
     }
 
-    public void verifyLoginPageIsDisplayed() {
-        signupToggle_id.isDisplayed();
-    }
-
-    public void enterEmail(String email) {
+    public void enterLoginEmail(String email) {
         emailField_id.sendKeys(email);
     }
     public void enterPassword(String password) {
@@ -50,6 +46,17 @@ public class LoginPage {
     public void clickLoginButton() {
         loginButton_id.click();
     }
+
+    public void verifyLoginPageIsDisplayed() {
+        signupToggle_id.isDisplayed();
+    }
+
+    public void validLogin(String email, String password) {
+        emailField_id.sendKeys(email);
+        passwordField_id.sendKeys(password);
+        loginButton_id.click();
+    }
+
     public void confirmIfErrorMessageIsDisplayed(String errorMessage) {
       WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         Alert alert = wait.until(ExpectedConditions.alertIsPresent());

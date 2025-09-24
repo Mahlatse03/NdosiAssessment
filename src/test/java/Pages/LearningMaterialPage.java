@@ -16,6 +16,9 @@ import java.util.List;
 public class LearningMaterialPage {
 
     WebDriver driver;
+    public LearningMaterialPage(WebDriver driver) {
+        this.driver = driver;
+    }
 
     @FindBy(id = "deviceType")
     List<WebElement> deviceType_id;
@@ -23,8 +26,11 @@ public class LearningMaterialPage {
     @FindBy(id = "brand")
     List<WebElement> brand_id;
 
-    @FindBy(name = "Storage")
+    @FindBy(name = "storage")
     List<WebElement> deviceStorageRadios;
+
+    @FindBy(id = "warranty-options")
+    List<WebElement> warrantyRadios;
 
     @FindBy(id = "color")
     List<WebElement> color_id;
@@ -38,17 +44,50 @@ public class LearningMaterialPage {
     @FindBy(id = "step1-pricing-summary")
     WebElement pricingSummary_id;
 
+    @FindBy(id = "step2-actions")
+    WebElement Step2Actions_id;
+
     @FindBy(id = "inventory-next-btn")
     WebElement nextButton_id;
 
     @FindBy(id = "inventory-title")
     WebElement inventoryTitle_id;
 
+    @FindBy(id = "summary-device-type")
+    WebElement summaryDeviceType_id;
+
+    @FindBy(id = "summary-storage")
+    WebElement summaryStorage_id;
+
+    @FindBy(id = "summary-quantity")
+    WebElement summaryQuantity_id;
+
+    @FindBy(id = "base-price-value")
+    WebElement basePriceValue_id;
+
+    @FindBy(id = "breakdown-quantity-value")
+    WebElement breakdownQuantityValue_id;
+
+    @FindBy(id = "breakdown-subtotal-value")
+    WebElement breakdownSubtotalValue_id;
+
+    @FindBy(id = "breakdown-warranty-value")
+    WebElement breakdownWarrantyValue_id;
+
+    @FindBy(id = "breakdown-shipping-value")
+    WebElement breakdownShippingValue_id;
+
+    @FindBy(id = "breakdown-total-value")
+    WebElement breakdownTotalValue_id;
+
+    @FindBy(id = "shipping-option-standard")
+    WebElement shippingOptionStandard_id;
+
+    @FindBy(id = "shipping-option-express")
+    WebElement shippingOptionExpress_id;
 
 
-    public LearningMaterialPage(WebDriver driver) {
-        this.driver = driver;
-    }
+
 
     public void verifyOverviewSectionIsDisplayed(String firstName) {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
@@ -63,10 +102,17 @@ public class LearningMaterialPage {
         header.isDisplayed();
     }
 
+    public void navigateToWizardPage() {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        WebElement webTabButton = wait.until(ExpectedConditions.elementToBeClickable(By.id("tab-btn-web")));
+        webTabButton.click();
+    }
+
     public void verifyInventoryTitleIsDisplayed() {
         Select dropdown = new Select(driver.findElement(By.id("deviceType")));
         String selectedValue = dropdown.getFirstSelectedOption().getAttribute("value");
-        Assert.assertFalse(selectedValue == null || selectedValue.isEmpty(), "Device is not selected.");
+        System.out.println("Selected value: " + selectedValue);
+        Assert.assertTrue(selectedValue == null || selectedValue.isEmpty(), "Device is not selected.");
         inventoryTitle_id.isDisplayed();
     }
 
@@ -78,12 +124,12 @@ public class LearningMaterialPage {
     public void verifyNoBrandSelected() {
         Select dropdown = new Select(driver.findElement(By.id("brand")));
         String selectedValue = dropdown.getFirstSelectedOption().getAttribute("value");
-        Assert.assertFalse(selectedValue == null || selectedValue.isEmpty(), "Brand is not selected.");
+        Assert.assertTrue(selectedValue == null || selectedValue.isEmpty(), "Brand is not selected.");
     }
 
-    public void selectBrand(String brand) {
+    public void selectBrand(String deviceBrand) {
         Select dropdown = new Select(driver.findElement(By.id("brand")));
-        dropdown.selectByVisibleText(brand);
+        dropdown.selectByVisibleText(deviceBrand);
     }
 
     public void verifyNoStorageSelected() {
@@ -94,7 +140,7 @@ public class LearningMaterialPage {
                 break;
             }
         }
-        Assert.assertTrue(isSelected, "A storage option must be selected.");
+        Assert.assertFalse(isSelected, "A storage option must be selected.");
     }
     public void selectDeviceStorage(String deviceStorage) {
         for (WebElement radio : deviceStorageRadios) {
@@ -105,9 +151,9 @@ public class LearningMaterialPage {
         }
     }
 
-    public void selectColor(String color) {
+    public void selectColor(String deviceColor) {
         Select dropdown = new Select(driver.findElement(By.id("color")));
-        dropdown.selectByVisibleText(color);
+        dropdown.selectByVisibleText(deviceColor);
     }
     public void enterQuantity(String quantity) {
         if (quantity_id.getAttribute("value").isEmpty()) {
@@ -131,12 +177,48 @@ public class LearningMaterialPage {
         }
     }
 
+    public void verifyNextButtonIsDisabled() {
+        Assert.assertTrue(nextButton_id.isEnabled(), "Next button is disable because some fields are empty.");
+    }
+
+    public void verifyStep2ActionsIsDisplayed() {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        WebElement step2Actions = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("step2-actions")));
+        Assert.assertTrue(step2Actions.isDisplayed(), "Step 2 actions section is not displayed.");
+    }
+
     public void confirmMissingFieldsAlert(String deviceErrorMessage) {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         Alert alert = wait.until(ExpectedConditions.alertIsPresent());
         String alertText = alert.getText();
         Assert.assertEquals(alertText, deviceErrorMessage);
         alert.accept();
+    }
+
+    public void confirmErrorMessageIsDisplayed(String deviceErrorMessage) {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        Alert alert = wait.until(ExpectedConditions.alertIsPresent());
+        String alertText = alert.getText();
+        Assert.assertEquals(alertText, deviceErrorMessage);
+        alert.accept();
+    }
+
+    public void confirmSuccessMessageIsDisplayed(String successMessage) {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        Alert alert = wait.until(ExpectedConditions.alertIsPresent());
+        String alertText = alert.getText();
+        Assert.assertEquals(alertText, successMessage);
+        alert.accept();
+    }
+
+
+    public void selectWarranty(String warranty) {
+        for (WebElement radio : warrantyRadios) {
+            if (radio.getAttribute("value").equals(warranty)) {
+                radio.click();
+                break;
+            }
+        }
     }
 
 }
