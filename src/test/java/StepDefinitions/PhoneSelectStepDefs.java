@@ -88,28 +88,41 @@ public class PhoneSelectStepDefs extends Base {
         learningMaterialPage.verifyNextButtonIsDisabled();
     }
 
-    @And("Order total should be correctly calculated based on device unit price {} storage price {} and quantity {}")
-    public void orderTotalOrderTotalShouldBeCorrectlyCalculatedBasedOnDeviceUnitPriceUnitPriceAndStoragePriceStoragePrice(double unitPrice, double storagePrice, int quantity) {
-        learningMaterialPage.verifySubtotalCalculation(unitPrice, storagePrice, quantity);
+    @And("Order total should be correctly calculated based on device quantity {} unit price {} storage price {}")
+    public void orderTotalShouldBeCorrectlyCalculatedBasedOnDeviceUnitPriceUnitPriceStoragePriceStorageCostAndQuantityQuantity(int quantity, double unitPrice, double priceOfStorage) {
+        learningMaterialPage.verifySubtotalCalculation(quantity, unitPrice, priceOfStorage);
     }
+
 
     @When("User clears the device selection")
     public void userClearsTheDeviceSelection() {
 
     }
 
-    @Then("Pricing should be reset to R{}")
-    public void pricingShouldBeResetToR(int clearCartAmount) {
+    @Then("Pricing should be reset")
+    public void pricingShouldBeReset() {
+    }
+
+    @When("User selects Express shipping {} and warranty {}")
+    public void userSelectsExpressShippingExpressShipping(String expressShipping, String warranty) {
+        learningMaterialPage.selectShippingOptionAndWarranty(expressShipping, warranty);
+        
+    }
+
+    @Then("Shipping cost {} and warranty {} should be added to the order total")
+    public void shippingCostShouldBeAddedToTheOrderTotal(double shippingCost, double warrantyCost) {
+        learningMaterialPage.verifyTotalInclusiveOfShippingAndWarranty(shippingCost, warrantyCost);
+        
     }
 
 
 
-    @After
+   /* @After
     public void quitBrowser() {
         if (driver != null) {
             driver.quit();
         }
-    }
+    }*/
 
 
 }

@@ -35,7 +35,7 @@
 <a href="#"><span class="badge badge-primary">Automation Report</span></a>
 </li>
 <li class="m-r-10">
-<a href="#"><span class="badge badge-primary">Sept 24, 2025 05:41:45 pm</span></a>
+<a href="#"><span class="badge badge-primary">Sept 24, 2025 10:25:59 pm</span></a>
 </li>
 </ul>
 </div>
@@ -71,13 +71,13 @@
 <div class="col-md-3">
 <div class="card"><div class="card-body">
 <p class="m-b-0">Started</p>
-<h3>Sept 24, 2025 05:41:45 pm</h3>
+<h3>Sept 24, 2025 10:25:59 pm</h3>
 </div></div>
 </div>
 <div class="col-md-3">
 <div class="card"><div class="card-body">
 <p class="m-b-0">Ended</p>
-<h3>Sept 24, 2025 05:41:51 pm</h3>
+<h3>Sept 24, 2025 10:26:05 pm</h3>
 </div></div>
 </div>
 <div class="col-md-3">
@@ -148,10 +148,10 @@
 </div>
 </div>
 <div class="card-footer">
-<div><small data-tooltip='84%'><b>16</b> steps passed</small></div>
+<div><small data-tooltip='90%'><b>19</b> steps passed</small></div>
 <div>
-<small data-tooltip='5%'><b>1</b> steps failed,
-<b>2</b> skipped, <b data-tooltip='%'>0</b> others
+<small data-tooltip='4%'><b>1</b> steps failed,
+<b>1</b> skipped, <b data-tooltip='%'>0</b> others
 </small>
 </div>
 </div>
@@ -167,7 +167,7 @@
 </div></div>
 <script>
 var timeline = {
-"Login validation":2.596,"Device validation":3.409
+"Login validation":1.998,"Device validation":3.413
 };
 </script>
 <div class="row">
@@ -212,10 +212,10 @@ warningChild: 0,
 skipChild: 0,
 infoChild: 0,
 grandChildCount: 5,
-passGrandChild: 16,
+passGrandChild: 19,
 failGrandChild: 1,
 warningGrandChild: 0,
-skipGrandChild: 2,
+skipGrandChild: 1,
 infoGrandChild: 0,
 eventsCount: 5,
 };
@@ -251,7 +251,7 @@ eventsCount: 5,
           <div class="test-detail">
             <p class="name">Login validation</p>
             <p class="text-sm">
-              <span>17:41:45</span> / <span>00:00:02:596</span>
+              <span>22:26:00</span> / <span>00:00:01:998</span>
               <span class="badge pass-bg log float-right">Pass</span>
             </p>
           </div>
@@ -260,9 +260,9 @@ eventsCount: 5,
 <div class="p-v-10">
 <div class="info">
 <h5 class="test-status text-pass">Login validation</h5>
-<span class='badge badge-success'>09.24.2025 17:41:45</span>
-<span class='badge badge-danger'>09.24.2025 17:41:48</span>
-<span class='badge badge-default'>00:00:02:596</span>
+<span class='badge badge-success'>09.24.2025 22:26:00</span>
+<span class='badge badge-danger'>09.24.2025 22:26:02</span>
+<span class='badge badge-default'>00:00:01:998</span>
 &middot; <span class='uri-anchor badge badge-default'>#test-id=1</span>
 <span title='Skip to the next failed step' class='badge badge-danger pointer float-right ne ml-1'><i class="fa fa-fast-forward"></i></span>
 <span title='Collapse all nodes' class='badge badge-default pointer float-right ct ml-1'><i class="fa fa-compress"></i></span>
@@ -335,7 +335,7 @@ eventsCount: 5,
           <div class="test-detail">
             <p class="name">Device validation</p>
             <p class="text-sm">
-              <span>17:41:48</span> / <span>00:00:03:409</span>
+              <span>22:26:02</span> / <span>00:00:03:413</span>
               <span class="badge fail-bg log float-right">Fail</span>
             </p>
           </div>
@@ -344,9 +344,9 @@ eventsCount: 5,
 <div class="p-v-10">
 <div class="info">
 <h5 class="test-status text-fail">Device validation</h5>
-<span class='badge badge-success'>09.24.2025 17:41:48</span>
-<span class='badge badge-danger'>09.24.2025 17:41:51</span>
-<span class='badge badge-default'>00:00:03:409</span>
+<span class='badge badge-success'>09.24.2025 22:26:02</span>
+<span class='badge badge-danger'>09.24.2025 22:26:05</span>
+<span class='badge badge-default'>00:00:03:413</span>
 &middot; <span class='uri-anchor badge badge-default'>#test-id=12</span>
 <span title='Skip to the next failed step' class='badge badge-danger pointer float-right ne ml-1'><i class="fa fa-fast-forward"></i></span>
 <span title='Collapse all nodes' class='badge badge-default pointer float-right ct ml-1'><i class="fa fa-compress"></i></span>
@@ -415,76 +415,34 @@ eventsCount: 5,
       <div>
       </div>
                   </div>
-                  <div class="step fail-bg">
-                    <span>And Order total should be correctly calculated based on device unit price 400.00 storage price <storagePrice> and quantity 1"</span>
+                  <div class="step pass-bg">
+                    <span>And Order total should be correctly calculated based on device quantity 1 unit price 400.00 storage price 80.00</span>
       <div>
-        <textarea disabled class="code-block">io.cucumber.core.exception.CucumberException: Could not convert arguments for step [Order total should be correctly calculated based on device unit price {} storage price {} and quantity {}] defined at 'StepDefinitions.PhoneSelectStepDefs.orderTotalOrderTotalShouldBeCorrectlyCalculatedBasedOnDeviceUnitPriceUnitPriceAndStoragePriceStoragePrice(double,double,int)'.
-	at io.cucumber.core.runner.PickleStepDefinitionMatch.couldNotConvertArguments(PickleStepDefinitionMatch.java:111)
-	at io.cucumber.core.runner.PickleStepDefinitionMatch.runStep(PickleStepDefinitionMatch.java:55)
-	at io.cucumber.core.runner.ExecutionMode$1.execute(ExecutionMode.java:10)
-	at io.cucumber.core.runner.TestStep.executeStep(TestStep.java:81)
-	at io.cucumber.core.runner.TestStep.run(TestStep.java:53)
-	at io.cucumber.core.runner.PickleStepTestStep.run(PickleStepTestStep.java:51)
-	at io.cucumber.core.runner.TestCase.run(TestCase.java:86)
-	at io.cucumber.core.runner.Runner.runPickle(Runner.java:77)
-	at io.cucumber.testng.TestNGCucumberRunner.lambda$runScenario$1(TestNGCucumberRunner.java:135)
-	at io.cucumber.core.runtime.CucumberExecutionContext.lambda$runTestCase$5(CucumberExecutionContext.java:136)
-	at io.cucumber.core.runtime.RethrowingThrowableCollector.executeAndThrow(RethrowingThrowableCollector.java:23)
-	at io.cucumber.core.runtime.CucumberExecutionContext.runTestCase(CucumberExecutionContext.java:136)
-	at io.cucumber.testng.TestNGCucumberRunner.runScenario(TestNGCucumberRunner.java:132)
-	at io.cucumber.testng.AbstractTestNGCucumberTests.runScenario(AbstractTestNGCucumberTests.java:35)
-	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
-	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:141)
-	at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:687)
-	at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:230)
-	at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:63)
-	at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:995)
-	at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:203)
-	at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:154)
-	at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:134)
-	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
-	at org.testng.TestRunner.privateRun(TestRunner.java:741)
-	at org.testng.TestRunner.run(TestRunner.java:616)
-	at org.testng.SuiteRunner.runTest(SuiteRunner.java:421)
-	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:413)
-	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:373)
-	at org.testng.SuiteRunner.run(SuiteRunner.java:312)
-	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
-	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95)
-	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1274)
-	at org.testng.TestNG.runSuitesLocally(TestNG.java:1208)
-	at org.testng.TestNG.runSuites(TestNG.java:1112)
-	at org.testng.TestNG.run(TestNG.java:1079)
-	at com.intellij.rt.testng.IDEARemoteTestNG.run(IDEARemoteTestNG.java:65)
-	at com.intellij.rt.testng.RemoteTestNGStarter.main(RemoteTestNGStarter.java:105)
-Caused by: io.cucumber.cucumberexpressions.CucumberExpressionException: Failed to parse number
-	at io.cucumber.cucumberexpressions.NumberParser.parse(NumberParser.java:44)
-	at io.cucumber.cucumberexpressions.NumberParser.parseDouble(NumberParser.java:24)
-	at io.cucumber.cucumberexpressions.BuiltInParameterTransformer.doTransform(BuiltInParameterTransformer.java:80)
-	at io.cucumber.cucumberexpressions.BuiltInParameterTransformer.transform(BuiltInParameterTransformer.java:22)
-	at io.cucumber.cucumberexpressions.CucumberExpression.lambda$match$8(CucumberExpression.java:159)
-	at io.cucumber.cucumberexpressions.ParameterType$TransformerAdaptor.transform(ParameterType.java:299)
-	at io.cucumber.cucumberexpressions.ParameterType.transform(ParameterType.java:259)
-	at io.cucumber.cucumberexpressions.Argument.getValue(Argument.java:42)
-	at io.cucumber.core.stepexpression.ExpressionArgument.getValue(ExpressionArgument.java:17)
-	at io.cucumber.core.runner.PickleStepDefinitionMatch.runStep(PickleStepDefinitionMatch.java:46)
-	... 37 more
-Caused by: java.text.ParseException: Unparseable number: "<storagePrice>"
-	at java.base/java.text.NumberFormat.parse(NumberFormat.java:434)
-	at io.cucumber.cucumberexpressions.NumberParser.parse(NumberParser.java:42)
-	... 46 more
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>When User clears the device selection</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>Then Pricing should be reset</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step fail-bg">
+                    <span>When User selects Express shipping Yes and warranty 1yr</span>
+      <div>
+        <textarea disabled class="code-block">java.lang.NullPointerException: Cannot invoke "String.equals(Object)" because the return value of "org.openqa.selenium.WebElement.getAttribute(String)" is null
+	at Pages.LearningMaterialPage.selectShippingOptionAndWarranty(LearningMaterialPage.java:258)
+	at StepDefinitions.PhoneSelectStepDefs.userSelectsExpressShippingExpressShipping(PhoneSelectStepDefs.java:108)
+	at ✽.User selects Express shipping Yes and warranty 1yr(file:///Users/mahlatsedau/Documents/Automation/NdosiAssessment/src/test/resources/Features/Wizard.feature:35)
 </textarea>
       
       </div>
                   </div>
                   <div class="step skip-bg">
-                    <span>When User clears the device selection</span>
-      <div>Step skipped
-      </div>
-                  </div>
-                  <div class="step skip-bg">
-                    <span>Then Pricing should be reset to R0.00</span>
+                    <span>Then Shipping cost 25.00  and warranty cost 49.00 should be added to the order total</span>
       <div>Step skipped
       </div>
                   </div>
@@ -536,7 +494,7 @@ Caused by: java.text.ParseException: Unparseable number: "<storagePrice>"
 <tbody>
 <tr class="tag-test-status" status="pass">
 <td><span class="badge log pass-bg">Pass</span></td>
-<td>17:41:45 pm</td>
+<td>22:26:00 pm</td>
 <td>
 <a href="#" class="linked" test-id='1' id='3'>As a user, I want to log in to access my account</a>
 <div class="">
@@ -572,7 +530,7 @@ Caused by: java.text.ParseException: Unparseable number: "<storagePrice>"
 <tbody>
 <tr class="tag-test-status" status="fail">
 <td><span class="badge log fail-bg">Fail</span></td>
-<td>17:41:48 pm</td>
+<td>22:26:02 pm</td>
 <td>
 <a href="#" class="linked" test-id='12' id='14'>As a user, I want to buy device(s) on the wizard page</a>
 <div class="">
@@ -605,12 +563,12 @@ Caused by: java.text.ParseException: Unparseable number: "<storagePrice>"
 <span class="meta">
 <span class='badge log badge-danger'>1</span>
 </span>
-<p class="name">io.cucumber.core.exception.CucumberException</p>
+<p class="name">java.lang.NullPointerException</p>
 <p class="duration text-sm">1 tests</p>
 </div>
 <div class="test-contents d-none">
 <div class="info">
-<h4>io.cucumber.core.exception.CucumberException</h4>
+<h4>java.lang.NullPointerException</h4>
 <span status="fail" class='badge log badge-danger'>1 failed</span>
 </div>
 <table class='table table-sm mt-4'>
@@ -624,11 +582,11 @@ Caused by: java.text.ParseException: Unparseable number: "<storagePrice>"
 <tbody>
 <tr class="tag-test-status" status="fail">
 <td><span class="badge log fail-bg">Fail</span></td>
-<td>17:41:49 pm</td>
+<td>22:26:04 pm</td>
 <td>
-<a href="#" class="linked" test-id='12' id='24'>And Order total should be correctly calculated based on device unit price 400.00 storage price <storagePrice> and quantity 1"</a>
+<a href="#" class="linked" test-id='12' id='27'>When User selects Express shipping Yes and warranty 1yr</a>
 <div class="">
-<span class="badge badge-default">Device validation.As a user, I want to buy device(s) on the wizard page.And Order total should be correctly calculated based on device unit price 400.00 storage price <storagePrice> and quantity 1"</span>
+<span class="badge badge-default">Device validation.As a user, I want to buy device(s) on the wizard page.When User selects Express shipping Yes and warranty 1yr</span>
 </div>
 </td>
 </tr>

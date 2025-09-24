@@ -87,8 +87,6 @@ public class LearningMaterialPage {
     WebElement shippingOptionExpress_id;
 
 
-
-
     public void verifyOverviewSectionIsDisplayed(String firstName) {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         WebElement header = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("practice-header")));
@@ -111,7 +109,6 @@ public class LearningMaterialPage {
     public void verifyInventoryTitleIsDisplayed() {
         Select dropdown = new Select(driver.findElement(By.id("deviceType")));
         String selectedValue = dropdown.getFirstSelectedOption().getAttribute("value");
-        System.out.println("Selected value: " + selectedValue);
         Assert.assertTrue(selectedValue == null || selectedValue.isEmpty(), "Device is not selected.");
         inventoryTitle_id.isDisplayed();
     }
@@ -211,8 +208,8 @@ public class LearningMaterialPage {
         alert.accept();
     }
 
-    public void verifySubtotalCalculation(double unitPrice, double storagePrice, int quantity){
-        String basePriceText = basePriceValue_id.getText().replace("$", "").trim();
+    public void verifySubtotalCalculation(int quantity, double unitPrice, double priceOfStorage){
+        String basePriceText = basePriceValue_id.getText().replace("R", "").trim();
         String quantityText = breakdownQuantityValue_id.getText().trim();
         String subtotalText = breakdownSubtotalValue_id.getText().replace("R", "").trim();
         String totalText = breakdownTotalValue_id.getText().replace("R", "").trim();
@@ -222,21 +219,49 @@ public class LearningMaterialPage {
         double actualSubtotalValue = Double.parseDouble(subtotalText);
         double actualTotalValue = Double.parseDouble(totalText);
 
-        double expectedTotalValue = (unitPrice + storagePrice) * quantity;
+        double expectedBasePrice = (unitPrice + priceOfStorage) * quantity;
+       // double storagePrice1 = Double.parseDouble(storagePrice);
 
-        Assert.assertEquals(basePriceValue, unitPrice, "Base price is incorrect.");
+
+        double expectedTotalValue = (unitPrice + priceOfStorage) * quantity;
+        Assert.assertEquals(basePriceValue, expectedBasePrice, "Base price is incorrect.");
         Assert.assertEquals(quantityValue, quantity, "Quantity is incorrect.");
-        Assert.assertEquals(actualSubtotalValue, (unitPrice + storagePrice) * quantity, "Subtotal calculation is incorrect.");
+        Assert.assertEquals(actualSubtotalValue, (unitPrice + priceOfStorage) * quantity, "Subtotal calculation is incorrect.");
         Assert.assertEquals(actualTotalValue, expectedTotalValue, "Total calculation is incorrect.");
     }
 
-    public void selectWarranty(String warranty) {
+    public void verifyTotalInclusiveOfShippingAndWarranty(double warrantyCost, double shippingCost){
+        String totalText = breakdownTotalValue_id.getText().replace("R", "").trim();
+        double actualTotalValue = Double.parseDouble(totalText);
+        String subtotalText = breakdownSubtotalValue_id.getText().replace("R", "").trim();
+        double actualSubtotalValue = Double.parseDouble(subtotalText);
+
+        double expectedTotalValue = actualSubtotalValue + warrantyCost + shippingCost;
+        Assert.assertEquals(actualTotalValue, expectedTotalValue, "Total calculation is incorrect including shipping and warranty.");
+    }
+
+    public void verifyClearCartAmount(){
+        String totalText = breakdownTotalValue_id.getText().replace("R", "").trim();
+        double actualTotalValue = Double.parseDouble(totalText);
+        Assert.assertEquals(actualTotalValue, 0.00, "Total calculation is incorrect after clearing the cart.");
+    }
+
+    public void selectShippingOptionAndWarranty (String shippingOption, String warranty) {
+        if (shippingOption.equalsIgnoreCase("Yes")) {
+            shippingOptionExpress_id.click();
+        }
+        else {
+            shippingOptionStandard_id.click();
+        }
+
         for (WebElement radio : warrantyRadios) {
-            if (radio.getAttribute("value").equals(warranty)) {
+            if (radio.getAttribute("value").equals(warranty)){
                 radio.click();
                 break;
             }
         }
     }
+
+
 
 }
