@@ -88,8 +88,9 @@ public class PhoneSelectStepDefs extends Base {
         learningMaterialPage.verifyNextButtonIsDisabled();
     }
 
-    @And("Order total <orderTotal> should be correctly calculated based on device unit price <unitPrice> and storage price <storagePrice>")
-    public void orderTotalOrderTotalShouldBeCorrectlyCalculatedBasedOnDeviceUnitPriceUnitPriceAndStoragePriceStoragePrice() {
+    @And("Order total should be correctly calculated based on device unit price {} storage price {} and quantity {}")
+    public void orderTotalOrderTotalShouldBeCorrectlyCalculatedBasedOnDeviceUnitPriceUnitPriceAndStoragePriceStoragePrice(double unitPrice, double storagePrice, int quantity) {
+        learningMaterialPage.verifySubtotalCalculation(unitPrice, storagePrice, quantity);
     }
 
     @When("User clears the device selection")
@@ -102,13 +103,13 @@ public class PhoneSelectStepDefs extends Base {
     }
 
 
-/*
+
     @After
     public void quitBrowser() {
         if (driver != null) {
             driver.quit();
         }
-    }*/
+    }
 
 
 }

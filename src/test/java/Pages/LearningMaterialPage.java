@@ -211,6 +211,24 @@ public class LearningMaterialPage {
         alert.accept();
     }
 
+    public void verifySubtotalCalculation(double unitPrice, double storagePrice, int quantity){
+        String basePriceText = basePriceValue_id.getText().replace("$", "").trim();
+        String quantityText = breakdownQuantityValue_id.getText().trim();
+        String subtotalText = breakdownSubtotalValue_id.getText().replace("R", "").trim();
+        String totalText = breakdownTotalValue_id.getText().replace("R", "").trim();
+
+        double basePriceValue = Double.parseDouble(basePriceText);
+        int quantityValue = Integer.parseInt(quantityText);
+        double actualSubtotalValue = Double.parseDouble(subtotalText);
+        double actualTotalValue = Double.parseDouble(totalText);
+
+        double expectedTotalValue = (unitPrice + storagePrice) * quantity;
+
+        Assert.assertEquals(basePriceValue, unitPrice, "Base price is incorrect.");
+        Assert.assertEquals(quantityValue, quantity, "Quantity is incorrect.");
+        Assert.assertEquals(actualSubtotalValue, (unitPrice + storagePrice) * quantity, "Subtotal calculation is incorrect.");
+        Assert.assertEquals(actualTotalValue, expectedTotalValue, "Total calculation is incorrect.");
+    }
 
     public void selectWarranty(String warranty) {
         for (WebElement radio : warrantyRadios) {

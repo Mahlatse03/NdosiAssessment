@@ -1,7 +1,7 @@
 Feature: Device validation
 
-  @invalidPhoneDetails @loginRequired
-  Scenario Outline: As a user, I want to buy device(s) on the wizard page
+  @invalidPhoneDetails
+  Scenario Outline: As a user, I want to enter invalid device details and see appropriate error messages
     Given I am on Wizard page and there is no device selected
     When User selects a device <deviceType>
     And User must select a brand <deviceBrand> if there is no brand selected
@@ -18,7 +18,7 @@ Feature: Device validation
 #      | Phone      | Apple       | 128GB         | 1        | Gold        |             |
 #      |            | Apple       | 128GB         | 1        |             | 123 Main St |
 
-  @validPhoneDetails @loginRequired
+  @validPhoneDetails
   Scenario Outline: As a user, I want to buy device(s) on the wizard page
     Given I am on Wizard page and there is no device selected
     When User selects a device <deviceType>
@@ -29,12 +29,12 @@ Feature: Device validation
     And User must capture address <address> if there is no address
     And Next button is clicked and all fields are filled
     Then User should be taken to the next step where pricing panel is displayed
-    And Order total <orderTotal> should be correctly calculated based on device unit price <unitPrice> and storage price <storagePrice>
+    And Order total should be correctly calculated based on device unit price <unitPrice> storage price <storagePrice> and quantity <quantity>"
     When User clears the device selection
     Then Pricing should be reset to R0.00
     Examples:
       | deviceType | deviceBrand | deviceStorage | quantity | deviceColor | address     | unitPrice | storagePrice
-      | Phone      | Apple       | 128GB         | 1        | Black       | 123 Main St | 400      |80
-#      | Tablet     | Samsung     | 256GB | 2        | White       | 456 Oak Ave |600 |160
-#      | Laptop     | Xiaomi      | 64GB  | 3        | Blue        | 789 Pine Rd |1200 |0
-#      | Phone      | Other       | 256GB | 1        | Gold        | 321 Elm St  |400 |160
+      | Phone      | Apple       | 128GB         | 1        | Black       | 123 Main St | 400.00    | 80.00
+#      | Tablet     | Samsung     | 256GB | 2        | White       | 456 Oak Ave |600 |160.00
+#      | Laptop     | Xiaomi      | 64GB  | 3        | Blue        | 789 Pine Rd |1200 |0.00
+#      | Phone      | Other       | 256GB | 1        | Gold        | 321 Elm St  |400 |160.00
