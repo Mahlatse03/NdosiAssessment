@@ -35,7 +35,7 @@
 <a href="#"><span class="badge badge-primary">Automation Report</span></a>
 </li>
 <li class="m-r-10">
-<a href="#"><span class="badge badge-primary">Sept 24, 2025 10:25:59 pm</span></a>
+<a href="#"><span class="badge badge-primary">Sept 25, 2025 05:59:12 pm</span></a>
 </li>
 </ul>
 </div>
@@ -57,11 +57,6 @@
 <span class="ico"><i class="fa fa-tag"></i></span>
 </a>
 </li>
-<li class="nav-item dropdown" onclick="toggleView('exception-view')">
-<a id="nav-exception" class="dropdown-toggle" href="#">
-<span class="ico"><i class="fa fa-bug"></i></span>
-</a>
-</li>
 </ul>
 </div>
 </div>      <div class="vcontainer">
@@ -71,25 +66,25 @@
 <div class="col-md-3">
 <div class="card"><div class="card-body">
 <p class="m-b-0">Started</p>
-<h3>Sept 24, 2025 10:25:59 pm</h3>
+<h3>Sept 25, 2025 05:59:12 pm</h3>
 </div></div>
 </div>
 <div class="col-md-3">
 <div class="card"><div class="card-body">
 <p class="m-b-0">Ended</p>
-<h3>Sept 24, 2025 10:26:05 pm</h3>
+<h3>Sept 25, 2025 05:59:19 pm</h3>
 </div></div>
 </div>
 <div class="col-md-3">
 <div class="card"><div class="card-body">
 <p class="m-b-0 text-pass">Features Passed</p>
-<h3>1</h3>
+<h3>2</h3>
 </div></div>
 </div>
 <div class="col-md-3">
 <div class="card"><div class="card-body">
 <p class="m-b-0 text-fail">Features Failed</p>
-<h3>1</h3>
+<h3>0</h3>
 </div></div>
 </div>
 </div>
@@ -105,12 +100,12 @@
 </div>
 </div>
 <div class="card-footer">
-<div><small data-tooltip='50%'>
-<b>1</b> features passed
+<div><small data-tooltip='100%'>
+<b>2</b> features passed
 </small>
 </div>
 <div>
-<small data-tooltip='50%'><b>1</b> features failed,
+<small data-tooltip='0%'><b>0</b> features failed,
 <b>0</b> skipped, <b data-tooltip='0%'>0</b> others
 </small>
 </div>
@@ -128,9 +123,9 @@
 </div>
 </div>
 <div class="card-footer">
-<div><small data-tooltip='50%'><b>1</b> scenarios passed</small></div>
+<div><small data-tooltip='100%'><b>2</b> scenarios passed</small></div>
 <div>
-<small data-tooltip='50%'><b>1</b> scenarios failed,
+<small data-tooltip='0%'><b>0</b> scenarios failed,
 <b>0</b> skipped, <b data-tooltip='%'>0</b> others
 </small>
 </div>
@@ -148,10 +143,10 @@
 </div>
 </div>
 <div class="card-footer">
-<div><small data-tooltip='90%'><b>19</b> steps passed</small></div>
+<div><small data-tooltip='100%'><b>22</b> steps passed</small></div>
 <div>
-<small data-tooltip='4%'><b>1</b> steps failed,
-<b>1</b> skipped, <b data-tooltip='%'>0</b> others
+<small data-tooltip='0%'><b>0</b> steps failed,
+<b>0</b> skipped, <b data-tooltip='%'>0</b> others
 </small>
 </div>
 </div>
@@ -167,7 +162,7 @@
 </div></div>
 <script>
 var timeline = {
-"Login validation":1.998,"Device validation":3.413
+"Login validation":3.086,"Device validation":4.203
 };
 </script>
 <div class="row">
@@ -186,11 +181,11 @@ var timeline = {
 </tr>
 <tr>
 <td>@validPhoneDetails</td>
-<td>0</td>
 <td>1</td>
 <td>0</td>
 <td>0</td>
-<td>0%</td>
+<td>0</td>
+<td>100%</td>
 </tr>
 </tbody>
 </table></div>
@@ -201,21 +196,21 @@ var timeline = {
 <script>
 var statusGroup = {
 parentCount: 5,
-passParent: 1,
-failParent: 1,
+passParent: 2,
+failParent: 0,
 warningParent: 0,
 skipParent: 0,
 childCount: 5,
-passChild: 1,
-failChild: 1,
+passChild: 2,
+failChild: 0,
 warningChild: 0,
 skipChild: 0,
 infoChild: 0,
 grandChildCount: 5,
-passGrandChild: 19,
-failGrandChild: 1,
+passGrandChild: 22,
+failGrandChild: 0,
 warningGrandChild: 0,
-skipGrandChild: 1,
+skipGrandChild: 0,
 infoGrandChild: 0,
 eventsCount: 5,
 };
@@ -230,7 +225,6 @@ eventsCount: 5,
 <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-exclamation-circle"></i></a>
 <ul id="status-toggle" class="dropdown-menu dropdown-md p-v-0">
 <a class="dropdown-item" status="pass" href="#"><span>Pass</span><span class="status success"></span></a>
-<a class="dropdown-item" status="fail" href="#"><span>Fail</span><span class="status danger"></span></a>
 <div class="dropdown-divider"></div>
 <a status="clear" class="dropdown-item" href="#"><span>Clear</span><span class="pull-right"><i class="fa fa-close"></i></span></a>
 </ul>
@@ -251,7 +245,7 @@ eventsCount: 5,
           <div class="test-detail">
             <p class="name">Login validation</p>
             <p class="text-sm">
-              <span>22:26:00</span> / <span>00:00:01:998</span>
+              <span>17:59:12</span> / <span>00:00:03:086</span>
               <span class="badge pass-bg log float-right">Pass</span>
             </p>
           </div>
@@ -260,9 +254,9 @@ eventsCount: 5,
 <div class="p-v-10">
 <div class="info">
 <h5 class="test-status text-pass">Login validation</h5>
-<span class='badge badge-success'>09.24.2025 22:26:00</span>
-<span class='badge badge-danger'>09.24.2025 22:26:02</span>
-<span class='badge badge-default'>00:00:01:998</span>
+<span class='badge badge-success'>09.25.2025 17:59:12</span>
+<span class='badge badge-danger'>09.25.2025 17:59:15</span>
+<span class='badge badge-default'>00:00:03:086</span>
 &middot; <span class='uri-anchor badge badge-default'>#test-id=1</span>
 <span title='Skip to the next failed step' class='badge badge-danger pointer float-right ne ml-1'><i class="fa fa-fast-forward"></i></span>
 <span title='Collapse all nodes' class='badge badge-default pointer float-right ct ml-1'><i class="fa fa-compress"></i></span>
@@ -292,12 +286,12 @@ eventsCount: 5,
       </div>
                   </div>
                   <div class="step pass-bg">
-                    <span>When User enters email testuser</span>
+                    <span>When User enters email md@gmail.com</span>
       <div>
       </div>
                   </div>
                   <div class="step pass-bg">
-                    <span>And User enters password password123</span>
+                    <span>And User enters password emd12345</span>
       <div>
       </div>
                   </div>
@@ -307,7 +301,7 @@ eventsCount: 5,
       </div>
                   </div>
                   <div class="step pass-bg">
-                    <span>Then User should land on  the landing page with Test displayed</span>
+                    <span>Then User should land on  the landing page with Mahlatse displayed</span>
       <div>
       </div>
                   </div>
@@ -328,25 +322,25 @@ eventsCount: 5,
 </div>
           </div>
         </li>
-        <li class="test-item"  status="fail" test-id="12"
+        <li class="test-item"  status="pass" test-id="12"
           author=""
           tag=""
           device="">
           <div class="test-detail">
             <p class="name">Device validation</p>
             <p class="text-sm">
-              <span>22:26:02</span> / <span>00:00:03:413</span>
-              <span class="badge fail-bg log float-right">Fail</span>
+              <span>17:59:15</span> / <span>00:00:04:203</span>
+              <span class="badge pass-bg log float-right">Pass</span>
             </p>
           </div>
           <div class="test-contents d-none">
 <div class="detail-head">
 <div class="p-v-10">
 <div class="info">
-<h5 class="test-status text-fail">Device validation</h5>
-<span class='badge badge-success'>09.24.2025 22:26:02</span>
-<span class='badge badge-danger'>09.24.2025 22:26:05</span>
-<span class='badge badge-default'>00:00:03:413</span>
+<h5 class="test-status text-pass">Device validation</h5>
+<span class='badge badge-success'>09.25.2025 17:59:15</span>
+<span class='badge badge-danger'>09.25.2025 17:59:19</span>
+<span class='badge badge-default'>00:00:04:203</span>
 &middot; <span class='uri-anchor badge badge-default'>#test-id=12</span>
 <span title='Skip to the next failed step' class='badge badge-danger pointer float-right ne ml-1'><i class="fa fa-fast-forward"></i></span>
 <span title='Collapse all nodes' class='badge badge-default pointer float-right ct ml-1'><i class="fa fa-compress"></i></span>
@@ -359,17 +353,17 @@ eventsCount: 5,
   <div class="card">
     <div class="card-header" role="tab">
       <div class="card-title">
-        <div class="node" id="13"><span class="badge log fail-bg mr-2">Fail</span>As a user, I want to buy device(s) on the wizard page</div>
+        <div class="node" id="13"><span class="badge log pass-bg mr-2">Pass</span>As a user, I want to buy device(s) on the wizard page</div>
       </div>
     </div>
-        <div class="scenario_outline ">
+        <div class="scenario_outline collapse">
             <div class="card-body l1">
               <div class="card-header">
                 <div class="card-title outline-child">
-                  <div class="node" id="14"><span class="badge log fail-bg mr-2">Fail</span>As a user, I want to buy device(s) on the wizard page</div>
+                  <div class="node" id="14"><span class="badge log pass-bg mr-2">Pass</span>As a user, I want to buy device(s) on the wizard page</div>
                 </div>
               </div>
-              <div class="card-body mt-3 ">
+              <div class="card-body mt-3 collapse">
                   <div class="step pass-bg">
                     <span>Given I am on Wizard page and there is no device selected</span>
       <div>
@@ -430,20 +424,19 @@ eventsCount: 5,
       <div>
       </div>
                   </div>
-                  <div class="step fail-bg">
-                    <span>When User selects Express shipping Yes and warranty 1yr</span>
+                  <div class="step pass-bg">
+                    <span>When User selects Express shipping Yes</span>
       <div>
-        <textarea disabled class="code-block">java.lang.NullPointerException: Cannot invoke "String.equals(Object)" because the return value of "org.openqa.selenium.WebElement.getAttribute(String)" is null
-	at Pages.LearningMaterialPage.selectShippingOptionAndWarranty(LearningMaterialPage.java:258)
-	at StepDefinitions.PhoneSelectStepDefs.userSelectsExpressShippingExpressShipping(PhoneSelectStepDefs.java:108)
-	at ✽.User selects Express shipping Yes and warranty 1yr(file:///Users/mahlatsedau/Documents/Automation/NdosiAssessment/src/test/resources/Features/Wizard.feature:35)
-</textarea>
-      
       </div>
                   </div>
-                  <div class="step skip-bg">
-                    <span>Then Shipping cost 25.00  and warranty cost 49.00 should be added to the order total</span>
-      <div>Step skipped
+                  <div class="step pass-bg">
+                    <span>And User selects warranty 1yr</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>Then Shipping cost 25.00  and warranty 49.00 should be added to the order total</span>
+      <div>
       </div>
                   </div>
               </div>
@@ -494,7 +487,7 @@ eventsCount: 5,
 <tbody>
 <tr class="tag-test-status" status="pass">
 <td><span class="badge log pass-bg">Pass</span></td>
-<td>22:26:00 pm</td>
+<td>17:59:12 pm</td>
 <td>
 <a href="#" class="linked" test-id='1' id='3'>As a user, I want to log in to access my account</a>
 <div class="">
@@ -509,7 +502,7 @@ eventsCount: 5,
 <li class="test-item">
 <div class="test-detail">
 <span class="meta">
-<span class='badge log badge-danger'>1</span>
+<span class='badge log pass-bg'>1</span>
 </span>
 <p class="name">@validPhoneDetails</p>
 <p class="duration text-sm">1 tests</p>
@@ -517,7 +510,7 @@ eventsCount: 5,
 <div class="test-contents d-none">
 <div class="info">
 <h4>@validPhoneDetails</h4>
-<span status="fail" class='badge log badge-danger'>1 failed</span>
+<span status="pass" class='badge log pass-bg'>1 passed</span>
 </div>
 <table class='table table-sm mt-4'>
 <thead>
@@ -528,65 +521,13 @@ eventsCount: 5,
 </tr>
 </thead>
 <tbody>
-<tr class="tag-test-status" status="fail">
-<td><span class="badge log fail-bg">Fail</span></td>
-<td>22:26:02 pm</td>
+<tr class="tag-test-status" status="pass">
+<td><span class="badge log pass-bg">Pass</span></td>
+<td>17:59:15 pm</td>
 <td>
 <a href="#" class="linked" test-id='12' id='14'>As a user, I want to buy device(s) on the wizard page</a>
 <div class="">
 <span class="badge badge-default">Device validation.As a user, I want to buy device(s) on the wizard page</span>
-</div>
-</td>
-</tr>
-</tbody>
-</table>
-</div>
-</li>
-</ul>
-</div>
-</div>
-<div class="test-content scrollable">
-<div class="test-content-detail">
-<div class="detail-body"></div>
-</div>
-</div>
-</div><div class="test-wrapper row view exception-view attributes-view">
-<div class="test-list">
-<div class="test-list-tools">
-<ul class="tools pull-left"><li><a href=""><span class="font-size-14">Exception</span></a></li></ul>
-<ul class="tools text-right"><li><a href="#"><span class="badge badge-primary">1</span></a></li></ul>
-</div>
-<div class="test-list-wrapper scrollable">
-<ul class="test-list-item">
-<li class="test-item">
-<div class="test-detail">
-<span class="meta">
-<span class='badge log badge-danger'>1</span>
-</span>
-<p class="name">java.lang.NullPointerException</p>
-<p class="duration text-sm">1 tests</p>
-</div>
-<div class="test-contents d-none">
-<div class="info">
-<h4>java.lang.NullPointerException</h4>
-<span status="fail" class='badge log badge-danger'>1 failed</span>
-</div>
-<table class='table table-sm mt-4'>
-<thead>
-<tr>
-<th class="status-col">Status</th>
-<th class="timestamp-col">Timestamp</th>
-<th>TestName</th>
-</tr>
-</thead>
-<tbody>
-<tr class="tag-test-status" status="fail">
-<td><span class="badge log fail-bg">Fail</span></td>
-<td>22:26:04 pm</td>
-<td>
-<a href="#" class="linked" test-id='12' id='27'>When User selects Express shipping Yes and warranty 1yr</a>
-<div class="">
-<span class="badge badge-default">Device validation.As a user, I want to buy device(s) on the wizard page.When User selects Express shipping Yes and warranty 1yr</span>
 </div>
 </td>
 </tr>

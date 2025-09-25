@@ -11,7 +11,7 @@ Feature: Login validation
     Then User should be logged out and redirected to the login page
     Examples:
       | email    | password    | firstName |
-      | testuser | password123 | Test  |
+      | md@gmail.com | emd12345 | Mahlatse  |
 
   @invalidLogin
   Scenario Outline: As a user, I want to log in to access my account

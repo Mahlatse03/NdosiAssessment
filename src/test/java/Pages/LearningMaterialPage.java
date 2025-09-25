@@ -29,7 +29,7 @@ public class LearningMaterialPage {
     @FindBy(name = "storage")
     List<WebElement> deviceStorageRadios;
 
-    @FindBy(id = "warranty-options")
+    @FindBy(name = "warranty")
     List<WebElement> warrantyRadios;
 
     @FindBy(id = "color")
@@ -220,8 +220,6 @@ public class LearningMaterialPage {
         double actualTotalValue = Double.parseDouble(totalText);
 
         double expectedBasePrice = (unitPrice + priceOfStorage) * quantity;
-       // double storagePrice1 = Double.parseDouble(storagePrice);
-
 
         double expectedTotalValue = (unitPrice + priceOfStorage) * quantity;
         Assert.assertEquals(basePriceValue, expectedBasePrice, "Base price is incorrect.");
@@ -246,21 +244,32 @@ public class LearningMaterialPage {
         Assert.assertEquals(actualTotalValue, 0.00, "Total calculation is incorrect after clearing the cart.");
     }
 
-    public void selectShippingOptionAndWarranty (String shippingOption, String warranty) {
+    public void selectShippingOption (String shippingOption) {
+
         if (shippingOption.equalsIgnoreCase("Yes")) {
             shippingOptionExpress_id.click();
         }
         else {
             shippingOptionStandard_id.click();
         }
+    }
+
+    public void selectWarrantyOption (String warranty) {
 
         for (WebElement radio : warrantyRadios) {
-            if (radio.getAttribute("value").equals(warranty)){
+            if (warranty.equals(radio.getAttribute("value"))) {
+            //if (radio.getAttribute("value").equals(warranty)){
                 radio.click();
                 break;
             }
+            else{
+                System.out.println("Could not find the warranty option: " + warranty);
+            }
         }
+
     }
+
+
 
 
 

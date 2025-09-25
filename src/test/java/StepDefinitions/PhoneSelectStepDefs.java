@@ -20,7 +20,7 @@ public class PhoneSelectStepDefs extends Base {
 
     @Given("I am on Wizard page and there is no device selected")
     public void i_am_on_wizard_page_and_there_is_no_device_selected() {
-        loginPage.validLogin("testuser", "password123");
+        loginPage.validLogin("md@gmail.com", "emd12345");
         learningMaterialPage.navigateToWizardPage();
         learningMaterialPage.verifyInventoryTitleIsDisplayed();
 
@@ -103,10 +103,15 @@ public class PhoneSelectStepDefs extends Base {
     public void pricingShouldBeReset() {
     }
 
-    @When("User selects Express shipping {} and warranty {}")
-    public void userSelectsExpressShippingExpressShipping(String expressShipping, String warranty) {
-        learningMaterialPage.selectShippingOptionAndWarranty(expressShipping, warranty);
+    @When("User selects Express shipping {}")
+    public void userSelectsExpressShipping(String expressShipping) {
+        learningMaterialPage.selectShippingOption(expressShipping);
         
+    }
+
+    @And("User selects warranty {}")
+    public void userSelectsWarrantyWarranty(String warranty) {
+        learningMaterialPage.selectWarrantyOption(warranty);
     }
 
     @Then("Shipping cost {} and warranty {} should be added to the order total")
