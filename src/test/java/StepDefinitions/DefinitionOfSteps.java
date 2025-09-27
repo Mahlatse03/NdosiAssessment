@@ -12,7 +12,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 public class DefinitionOfSteps extends Base {
-
+//extends links this class to Base class
    /* public WebDriver driver;
     public DefinitionOfSteps (){
         this.driver = super.driver;

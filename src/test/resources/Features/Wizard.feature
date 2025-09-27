@@ -30,11 +30,11 @@ Feature: Device validation
     And Next button is clicked and all fields are filled
     Then User should be taken to the next step where pricing panel is displayed
     And Order total should be correctly calculated based on device quantity <quantity> unit price <unitPrice> storage price <priceOfStorage>
-    When User clears the device selection
-    Then Pricing should be reset
     When User selects Express shipping <expressShipping>
     And User selects warranty <warranty>
     Then Shipping cost <shippingCost>  and warranty <warrantyCost> should be added to the order total
+    When User clears the device selection
+    Then Pricing should be reset
 
     Examples:
       | deviceType | deviceBrand | deviceStorage | quantity | deviceColor | address     | unitPrice | priceOfStorage | expressShipping | warranty | shippingCost | warrantyCost |

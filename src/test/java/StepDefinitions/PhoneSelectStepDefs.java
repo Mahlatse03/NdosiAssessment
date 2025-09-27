@@ -96,11 +96,13 @@ public class PhoneSelectStepDefs extends Base {
 
     @When("User clears the device selection")
     public void userClearsTheDeviceSelection() {
+        learningMaterialPage.selectDeviceType("Select");
 
     }
 
     @Then("Pricing should be reset")
     public void pricingShouldBeReset() {
+        learningMaterialPage.verifyClearCartAmount();
     }
 
     @When("User selects Express shipping {}")
