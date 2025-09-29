@@ -96,7 +96,7 @@ public class PhoneSelectStepDefs extends Base {
 
     @When("User clears the device selection")
     public void userClearsTheDeviceSelection() {
-        learningMaterialPage.selectDeviceType("Select");
+        learningMaterialPage.clearDeviceType();
 
     }
 
@@ -111,14 +111,19 @@ public class PhoneSelectStepDefs extends Base {
         
     }
 
+    @And("User enters discount code {}")
+    public void userEntersDiscountCodeDiscountCode(String discountCode) {
+        learningMaterialPage.enterDiscountCode(discountCode);
+    }
+
     @And("User selects warranty {}")
     public void userSelectsWarrantyWarranty(String warranty) {
         learningMaterialPage.selectWarrantyOption(warranty);
     }
 
-    @Then("Shipping cost {} and warranty {} should be added to the order total")
-    public void shippingCostShouldBeAddedToTheOrderTotal(double shippingCost, double warrantyCost) {
-        learningMaterialPage.verifyTotalInclusiveOfShippingAndWarranty(shippingCost, warrantyCost);
+    @Then("Shipping cost {} warranty {} and discount {} should be added to the order total")
+    public void shippingCostShouldBeAddedToTheOrderTotal(double shippingCost, double warrantyCost, String discountCode) {
+        learningMaterialPage.verifyTotalInclusiveOfShippingAndWarranty(shippingCost, warrantyCost, discountCode);
         
     }
 

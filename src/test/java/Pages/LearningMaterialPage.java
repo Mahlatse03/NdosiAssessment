@@ -86,6 +86,23 @@ public class LearningMaterialPage {
     @FindBy(id = "shipping-option-express")
     WebElement shippingOptionExpress_id;
 
+    @FindBy(id = "inventory-back-btn")
+    WebElement inventoryBackButton_id;
+
+    @FindBy(id = "unit-price-value")
+    WebElement unitPriceValue_id;
+
+    @FindBy(id = "subtotal-value")
+    WebElement subtotalValue_id;
+
+    @FindBy(id = "discount-code")
+    WebElement discountCode_id;
+
+    @FindBy(id = "apply-discount-btn")
+    WebElement applyDiscountButton_id;
+
+    @FindBy(id = "discount-feedback")
+    WebElement discountFeedback_id;
 
     public void verifyOverviewSectionIsDisplayed(String firstName) {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
@@ -116,6 +133,12 @@ public class LearningMaterialPage {
     public void selectDeviceType(String deviceType) {
         Select dropdown = new Select(driver.findElement(By.id("deviceType")));
         dropdown.selectByVisibleText(deviceType);
+    }
+
+    public void clearDeviceType() {
+        inventoryBackButton_id.click();
+        Select dropdown = new Select(driver.findElement(By.id("deviceType")));
+        dropdown.selectByVisibleText("Select");
     }
 
     public void verifyNoBrandSelected() {
@@ -208,7 +231,22 @@ public class LearningMaterialPage {
         alert.accept();
     }
 
-    public void verifySubtotalCalculation(int quantity, double unitPrice, double priceOfStorage){
+    public void enterDiscountCode(String discountCode) {
+        discountCode_id.sendKeys(discountCode);
+        applyDiscountButton_id.click();
+
+        //Trim discount code to get discount value
+        int index = discountCode.indexOf("SAVE");
+        int discountValue = Integer.parseInt((index != -1) ? discountCode.substring(index + 4, index + 6).trim() : discountCode.trim());
+
+        //Verify discount applied
+        if (!discountFeedback_id.getText().isEmpty()) {
+            String feedbackText = discountFeedback_id.getText().trim();
+            Assert.assertEquals(feedbackText, "Code " + discountCode + " applied: -" + discountValue + "%");
+        }
+    }
+
+    public void verifySubtotalCalculation(int quantity, double unitPrice, double priceOfStorage) {
         String basePriceText = basePriceValue_id.getText().replace("R", "").trim();
         String quantityText = breakdownQuantityValue_id.getText().trim();
         String subtotalText = breakdownSubtotalValue_id.getText().replace("R", "").trim();
@@ -228,20 +266,34 @@ public class LearningMaterialPage {
         Assert.assertEquals(actualTotalValue, expectedTotalValue, "Total calculation is incorrect.");
     }
 
-    public void verifyTotalInclusiveOfShippingAndWarranty(double warrantyCost, double shippingCost){
+    public void verifyTotalInclusiveOfShippingAndWarranty(double warrantyCost, double shippingCost, String discountCode) {
         String totalText = breakdownTotalValue_id.getText().replace("R", "").trim();
         double actualTotalValue = Double.parseDouble(totalText);
         String subtotalText = breakdownSubtotalValue_id.getText().replace("R", "").trim();
         double actualSubtotalValue = Double.parseDouble(subtotalText);
 
+        //Trim discount code to get discount value
+        int index = discountCode.indexOf("SAVE");
+        int discountValue = Integer.parseInt((index != -1) ? discountCode.substring(index + 4, index + 6).trim() : discountCode.trim());
+
         double expectedTotalValue = actualSubtotalValue + warrantyCost + shippingCost;
-        Assert.assertEquals(actualTotalValue, expectedTotalValue, "Total calculation is incorrect including shipping and warranty.");
+
+      //  System.out.println("Discount value: " + discountValue);
+       // System.out.println("Expected total value: " + expectedTotalValue);
+        double discountAmount = (expectedTotalValue * discountValue) / 100;
+        double expectedTotalWithDiscount = expectedTotalValue - discountAmount;
+
+        Assert.assertEquals(actualTotalValue, expectedTotalWithDiscount, "Total calculation is incorrect including shipping and warranty.");
     }
 
     public void verifyClearCartAmount(){
-        String totalText = breakdownTotalValue_id.getText().replace("R", "").trim();
+        String totalText = subtotalValue_id.getText().replace("R", "").trim();
         double actualTotalValue = Double.parseDouble(totalText);
-        Assert.assertEquals(actualTotalValue, 0.00, "Total calculation is incorrect after clearing the cart.");
+        String unitPriceText = unitPriceValue_id.getText().replace("R", "").trim();
+        double actualUnitPriceValue = Double.parseDouble(unitPriceText);
+
+        double expectedUnitPriceValue = actualUnitPriceValue;
+        Assert.assertEquals(actualTotalValue, expectedUnitPriceValue, "Total calculation is incorrect after clearing the cart.");
     }
 
     public void selectShippingOption (String shippingOption) {

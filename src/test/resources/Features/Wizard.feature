@@ -32,13 +32,14 @@ Feature: Device validation
     And Order total should be correctly calculated based on device quantity <quantity> unit price <unitPrice> storage price <priceOfStorage>
     When User selects Express shipping <expressShipping>
     And User selects warranty <warranty>
-    Then Shipping cost <shippingCost>  and warranty <warrantyCost> should be added to the order total
+    And User enters discount code <discountCode>
+    Then Shipping cost <shippingCost>  warranty <warrantyCost> and discount <discountCode> should be added to the order total
     When User clears the device selection
     Then Pricing should be reset
 
     Examples:
-      | deviceType | deviceBrand | deviceStorage | quantity | deviceColor | address     | unitPrice | priceOfStorage | expressShipping | warranty | shippingCost | warrantyCost |
-      | Phone      | Apple       | 128GB         | 1        | Black       | 123 Main St | 400.00    | 80.00          | Yes             | 1yr      | 25.00        | 49.00        |
-#      | Tablet     | Samsung     | 256GB | 2        | White       | 456 Oak Ave |600 |160.00|No|2yr|0.00|89.00|
-#      | Laptop     | Xiaomi      | 64GB  | 3        | Blue        | 789 Pine Rd |1200 |0.00|Yes||25.00|0.00|
-#      | Phone      | Other       | 256GB | 1        | Gold        | 321 Elm St  |400 |160.00| No|1yr|0.00"|49.00|
+      | deviceType | deviceBrand | deviceStorage | quantity | deviceColor | address     | unitPrice | priceOfStorage | expressShipping | warranty | shippingCost | warrantyCost | discountCode |
+      | Phone      | Apple       | 128GB         | 1        | Black       | 123 Main St | 400.00    | 80.00          | Yes             | 1yr      | 25.00        | 49.00        | SAVE20       |
+#      | Tablet     | Samsung     | 256GB | 2        | White       | 456 Oak Ave |600 |160.00|No|2yr|0.00|89.00|SAVE35|
+#      | Laptop     | Xiaomi      | 64GB  | 3        | Blue        | 789 Pine Rd |1200 |0.00|Yes||25.00|0.00|SAVE40|
+#      | Phone      | Other       | 256GB | 1        | Gold        | 321 Elm St  |400 |160.00| No|1yr|0.00"|49.00|SAVE10|
